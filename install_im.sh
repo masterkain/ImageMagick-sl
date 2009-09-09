@@ -8,6 +8,7 @@ IMAGEMAGICK_ARGUMENTS="--disable-static --with-modules --without-perl --without-
 # Installation path.
 CONFIGURE_PREFIX="/usr/local" # no trailing slash.
 
+apps=()
 # Function that tries to download a file, if not abort the process.
 function try_download () {
   file_name=`echo "$1" | ruby -ruri -e 'puts File.basename(gets.to_s.chomp)'` # I cheated.
@@ -24,9 +25,18 @@ function try_download () {
     echo "Failed download: $1, size: "$file_size"B, aborting." >&2 # output on stderr.
     exit 65
   else
-    echo "Decompressing $file_name"
-    tar zxf $file_name
+    # add the filename to an array to be decompressed later.
+    apps=( "${apps[@]}" "$file_name" )
   fi
+}
+
+function decompress_applications () {
+  # decompress the array of apps.
+  for item in ${apps[*]}
+  do
+    echo "Decompressing $item"
+    tar zxf $item
+  done
 }
 
 # Before running anything try to download all requires files, saving time.
@@ -39,6 +49,8 @@ try_download http://www.littlecms.com/lcms-1.18a.tar.gz
 try_download http://ghostscript.com/releases/ghostscript-8.70.tar.gz
 try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.39.tar.gz
 try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.5.4-10.tar.gz
+# Decompress applications.
+decompress_applications
 
 # Freetype.
 cd freetype-2.3.9
