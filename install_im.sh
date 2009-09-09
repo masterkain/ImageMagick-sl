@@ -106,7 +106,7 @@ tar zxf ImageMagick-6.5.4-10.tar.gz
 cd ImageMagick-6.5.4-10
 export CPPFLAGS=-I$CONFIGURE_PREFIX/include
 export LDFLAGS=-L$CONFIGURE_PREFIX/lib
-./configure --prefix=$CONFIGURE_PREFIX --with-gs-font-dir=/usr/local/share/ghostscript/fonts "$IMAGEMAGICK_ARGUMENTS"
+./configure --prefix=$CONFIGURE_PREFIX $IMAGEMAGICK_ARGUMENTS --with-gs-font-dir=/usr/local/share/ghostscript/fonts
 make
 sudo make install
 cd ..
