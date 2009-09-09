@@ -106,6 +106,7 @@ sudo make install
 cd ..
 
 # GhostScript Fonts.
+sudo rm -rf $CONFIGURE_PREFIX/share/ghostscript/fonts # cleanup
 sudo mv fonts $CONFIGURE_PREFIX/share/ghostscript
 
 # ImageMagick.
