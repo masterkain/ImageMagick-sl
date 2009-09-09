@@ -10,11 +10,11 @@ CONFIGURE_PREFIX="/usr/local" # no trailing slash.
 
 # Function that tries to download a file, if not abort the process.
 function try_download () {
-  rm -f $1
+  file_name=`echo "$1" | ruby -ruri -e 'puts File.basename(gets.to_s.chomp)'` # I cheated.
+  rm -f $file_name
   echo "Downloading $1"
   curl --fail --silent -O --url $1
   result=$?
-  file_name=`echo "$1" | ruby -ruri -e 'puts File.basename(gets.to_s.chomp)'` # I cheated.
   file_size=`ls -l "$file_name" | awk '{print $5}'`
   # We check for normal http errors, otherwise check the file size
   # since some websites, like sourceforge, redirects and curl can't
