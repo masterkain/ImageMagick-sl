@@ -18,16 +18,15 @@ function try_download () {
   curl --fail --silent -O --url $1
   result=$? # Store the code of the last action, should be 0 for a successfull download.
   file_size=`ls -l "$file_name" | awk '{print $5}'`
-  # We check for normal http errors, otherwise check the file size
-  # since some websites, like sourceforge, redirects and curl can't
+  # We check for normal errors, otherwise check the file size.
+  # Some websites like sourceforge redirects and curl can't
   # detect the problem.
   if [[ $result -ne 0 || $file_size -lt 500000 ]] # less than 500K
   then
     echo "Failed download: $1, size: "$file_size"B, aborting." >&2 # output on stderr.
     exit 65
   else
-    # add the filename to an array to be decompressed later.
-    apps=( "${apps[@]}" "$file_name" )
+    apps=( "${apps[@]}" "$file_name" ) # add the filename to an array to be decompressed later.
   fi
 }
 
