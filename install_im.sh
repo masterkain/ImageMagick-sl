@@ -1,5 +1,6 @@
 #!/bin/bash
 # Installs ImageMagick on Snow Leopard
+# Created by Claudio Poli (http://www.icoretech.org)
 
 # Set the sourceforge.net's mirror to use.
 SF_MIRROR="heanet"
@@ -49,10 +50,14 @@ try_download http://www.littlecms.com/lcms-1.18a.tar.gz
 try_download http://ghostscript.com/releases/ghostscript-8.70.tar.gz
 try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.40.tar.gz
 try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.5.4-10.tar.gz
+
 # Decompress applications.
 decompress_applications
 
-# Freetype.
+echo "Starting..."
+
+# The FreeType Project.
+# A free, high-quality and portable font engine.
 cd freetype-2.3.9
 ./configure --prefix=$CONFIGURE_PREFIX
 make
@@ -60,13 +65,15 @@ sudo make install
 cd ..
 
 # LibPNG.
+# Official PNG reference library.
 cd libpng-1.2.40
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
 cd ..
 
-# JPEGsrc.
+# JPEG.
+# Library for JPEG image compression.
 cd jpeg-7
 ln -s `which glibtool` ./libtool
 export MACOSX_DEPLOYMENT_TARGET=10.6
@@ -76,13 +83,15 @@ sudo make install
 cd ..
 
 # LibTIFF.
+# Support for the Tag Image File Format (TIFF)
 cd tiff-3.8.2
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
 cd ..
 
-# LibWMF.
+# libwmf.
+# library to convert wmf files
 cd libwmf-0.2.8.4
 make clean
 ./configure
@@ -90,7 +99,8 @@ make
 sudo make install
 cd ..
 
-# LCMS.
+# Little cms.
+# A free color management engine in 100K.
 cd lcms-1.18
 make clean
 ./configure
@@ -99,17 +109,20 @@ sudo make install
 cd ..
 
 # GhostScript.
+# Interpreter for the PostScript language and for PDF.
 cd ghostscript-8.70
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
 cd ..
 
-# GhostScript Fonts.
+# Ghostscript Fonts.
+# Fonts and font metrics customarily distributed with Ghostscript.
 sudo rm -rf $CONFIGURE_PREFIX/share/ghostscript/fonts # cleanup
 sudo mv fonts $CONFIGURE_PREFIX/share/ghostscript
 
 # ImageMagick.
+# Software suite to create, edit, and compose bitmap images.
 cd ImageMagick-6.5.4-10
 export CPPFLAGS=-I$CONFIGURE_PREFIX/include
 export LDFLAGS=-L$CONFIGURE_PREFIX/lib
