@@ -48,7 +48,7 @@ try_download http://dl.maptools.org/dl/libtiff/tiff-3.8.2.tar.gz
 try_download http://www.littlecms.com/lcms-1.18a.tar.gz
 try_download http://ghostscript.com/releases/ghostscript-8.70.tar.gz
 try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.40.tar.gz
-try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.5.4-10.tar.gz
+try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.5.6-7.tar.gz
 
 # Decompress applications.
 decompress_applications
@@ -122,7 +122,7 @@ sudo mv fonts $CONFIGURE_PREFIX/share/ghostscript
 
 # ImageMagick.
 # Software suite to create, edit, and compose bitmap images.
-cd ImageMagick-6.5.4-10
+cd ImageMagick-6.5.6-7
 export CPPFLAGS=-I$CONFIGURE_PREFIX/include
 export LDFLAGS=-L$CONFIGURE_PREFIX/lib
 ./configure --prefix=$CONFIGURE_PREFIX $IMAGEMAGICK_ARGUMENTS --with-gs-font-dir=/usr/local/share/ghostscript/fonts
