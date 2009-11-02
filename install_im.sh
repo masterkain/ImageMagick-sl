@@ -1,13 +1,26 @@
 #!/bin/bash
-# Installs ImageMagick on Snow Leopard
+# Install ImageMagick on Snow Leopard (10.6)
+# Reported to work also on Leopard (10.5)
+#
 # Created by Claudio Poli (http://www.icoretech.org)
 
+# Configuration
 # Set the sourceforge.net's mirror to use.
 SF_MIRROR="heanet"
 # ImageMagick configure arguments.
+# If you plan on using PerlMagick remove --without-perl
 IMAGEMAGICK_ARGUMENTS="--disable-static --with-modules --without-perl --without-magick-plus-plus --with-quantum-depth=8"
 # Installation path.
-CONFIGURE_PREFIX="/usr/local" # no trailing slash.
+CONFIGURE_PREFIX=/usr/local # no trailing slash.
+# Mac OS X version.
+DEPLOYMENT_TARGET=10.6
+
+# Starting.
+echo "---------------------------------------------------------------------"
+echo "ImageMagick installation started."
+echo "Please note that there are incompatibilies with MacPorts."
+echo "Read: http://github.com/masterkain/ImageMagick-sl/issues/#issue/1 - reported by Nico Ritsche"
+echo "---------------------------------------------------------------------"
 
 apps=()
 # Function that tries to download a file, if not abort the process.
@@ -55,14 +68,6 @@ decompress_applications
 
 echo "Starting..."
 
-# The FreeType Project.
-# A free, high-quality and portable font engine.
-cd freetype-2.3.9
-./configure --prefix=$CONFIGURE_PREFIX
-make
-sudo make install
-cd ..
-
 # LibPNG.
 # Official PNG reference library.
 cd libpng-1.2.40
@@ -75,25 +80,8 @@ cd ..
 # Library for JPEG image compression.
 cd jpeg-7
 ln -s `which glibtool` ./libtool
-export MACOSX_DEPLOYMENT_TARGET=10.6
+export MACOSX_DEPLOYMENT_TARGET=$DEPLOYMENT_TARGET
 ./configure --enable-shared --prefix=$CONFIGURE_PREFIX
-make
-sudo make install
-cd ..
-
-# LibTIFF.
-# Support for the Tag Image File Format (TIFF)
-cd tiff-3.8.2
-./configure --prefix=$CONFIGURE_PREFIX
-make
-sudo make install
-cd ..
-
-# libwmf.
-# library to convert wmf files
-cd libwmf-0.2.8.4
-make clean
-./configure
 make
 sudo make install
 cd ..
@@ -120,6 +108,31 @@ cd ..
 sudo rm -rf $CONFIGURE_PREFIX/share/ghostscript/fonts # cleanup
 sudo mv fonts $CONFIGURE_PREFIX/share/ghostscript
 
+# The FreeType Project.
+# A free, high-quality and portable font engine.
+cd freetype-2.3.9
+./configure --prefix=$CONFIGURE_PREFIX
+make
+sudo make install
+cd ..
+
+# libwmf.
+# library to convert wmf files
+cd libwmf-0.2.8.4
+make clean
+./configure --without-expat --with-xml --with-png=/usr/X11
+make
+sudo make install
+cd ..
+
+# LibTIFF.
+# Support for the Tag Image File Format (TIFF)
+cd tiff-3.8.2
+./configure --prefix=$CONFIGURE_PREFIX
+make
+sudo make install
+cd ..
+
 # ImageMagick.
 # Software suite to create, edit, and compose bitmap images.
 cd ImageMagick-6.5.6-10
@@ -132,4 +145,12 @@ cd ..
 
 echo "ImageMagick installed."
 convert -version
+
+echo "Testing..."
+$CONFIGURE_PREFIX/bin/convert logo: logo.gif
+$CONFIGURE_PREFIX/bin/convert logo: logo.jpg
+$CONFIGURE_PREFIX/bin/convert logo: logo.png
+$CONFIGURE_PREFIX/bin/convert logo: logo.tiff
+echo "Tests done."
+
 exit
