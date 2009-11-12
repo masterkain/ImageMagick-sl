@@ -59,7 +59,7 @@ try_download http://"$SF_MIRROR".dl.sourceforge.net/project/wvware/libwmf/0.2.8.
 try_download http://www.ijg.org/files/jpegsrc.v7.tar.gz
 try_download http://dl.maptools.org/dl/libtiff/tiff-3.8.2.tar.gz
 try_download http://www.littlecms.com/lcms-1.18a.tar.gz
-try_download http://ghostscript.com/releases/ghostscript-8.70.tar.gz
+try_download http://ghostscript.googlecode.com/files/ghostscript-8.70.tar.gz
 try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.40.tar.gz
 try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.5.6-10.tar.gz
 
