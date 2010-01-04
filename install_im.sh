@@ -12,6 +12,8 @@ SF_MIRROR="heanet"
 IMAGEMAGICK_ARGUMENTS="--disable-static --with-modules --without-perl --without-magick-plus-plus --with-quantum-depth=8"
 # Installation path.
 CONFIGURE_PREFIX=/usr/local # no trailing slash.
+# GhostScript font path.
+CONFIGURE_GS_FONT=$CONFIGURE_PREFIX/share/ghostscript
 # Mac OS X version.
 DEPLOYMENT_TARGET=10.6
 
@@ -56,7 +58,7 @@ function decompress_applications () {
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/freetype/freetype2/2.3.11/freetype-2.3.11.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/gs-fonts/gs-fonts/8.11%20%28base%2035%2C%20GPL%29/ghostscript-fonts-std-8.11.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/wvware/libwmf/0.2.8.4/libwmf-0.2.8.4.tar.gz
-try_download http://lilypond.org/download/gub-sources/jpegsrc/jpegsrc.v6b.tar.gz
+try_download http://www.ijg.org/files/jpegsrc.v7.tar.gz
 try_download ftp://ftp.remotesensing.org/pub/libtiff/tiff-3.9.2.tar.gz
 try_download http://www.littlecms.com/lcms-1.19.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-8.70.tar.gz
@@ -78,7 +80,7 @@ cd ..
 
 # JPEG.
 # Library for JPEG image compression.
-cd jpeg-6b
+cd jpeg-7
 ln -s `which glibtool` ./libtool
 export MACOSX_DEPLOYMENT_TARGET=$DEPLOYMENT_TARGET
 ./configure --enable-shared --prefix=$CONFIGURE_PREFIX
@@ -106,7 +108,7 @@ cd ..
 # Ghostscript Fonts.
 # Fonts and font metrics customarily distributed with Ghostscript.
 sudo rm -rf $CONFIGURE_PREFIX/share/ghostscript/fonts # cleanup
-sudo mv fonts $CONFIGURE_PREFIX/share/ghostscript
+sudo mv fonts $CONFIGURE_GS_FONT
 
 # The FreeType Project.
 # A free, high-quality and portable font engine.
@@ -138,7 +140,7 @@ cd ..
 cd ImageMagick-6.5.8-10
 export CPPFLAGS=-I$CONFIGURE_PREFIX/include
 export LDFLAGS=-L$CONFIGURE_PREFIX/lib
-./configure --prefix=$CONFIGURE_PREFIX $IMAGEMAGICK_ARGUMENTS --with-gs-font-dir=/usr/local/share/ghostscript/fonts
+./configure --prefix=$CONFIGURE_PREFIX $IMAGEMAGICK_ARGUMENTS --with-gs-font-dir=$CONFIGURE_GS_FONT
 make
 sudo make install
 cd ..
