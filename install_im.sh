@@ -4,12 +4,13 @@
 #
 # Created by Claudio Poli (http://www.icoretech.org)
 
-# Configuration
+# Configuration.
 # Set the sourceforge.net's mirror to use.
 SF_MIRROR="heanet"
 # ImageMagick configure arguments.
 # If you plan on using PerlMagick remove --without-perl
-IMAGEMAGICK_ARGUMENTS="--disable-static --with-modules --without-perl --without-magick-plus-plus --with-quantum-depth=8"
+# In any case tweak as your liking.
+IMAGEMAGICK_ARGUMENTS="--disable-static --with-modules --without-perl --without-magick-plus-plus --with-quantum-depth=8 --disable-openmp"
 # Installation path.
 CONFIGURE_PREFIX=/usr/local # no trailing slash.
 # Mac OS X version.
