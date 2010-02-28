@@ -63,7 +63,7 @@ try_download http://www.ijg.org/files/jpegsrc.v7.tar.gz
 try_download ftp://ftp.remotesensing.org/pub/libtiff/tiff-3.9.2.tar.gz
 try_download http://www.littlecms.com/lcms-1.19.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-8.70.tar.gz
-try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.42.tar.gz
+try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.43.tar.gz
 try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.5.8-10.tar.gz
 
 # Decompress applications.
@@ -73,7 +73,7 @@ echo "Starting..."
 
 # LibPNG.
 # Official PNG reference library.
-cd libpng-1.2.42
+cd libpng-1.2.43
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
