@@ -61,9 +61,9 @@ try_download http://"$SF_MIRROR".dl.sourceforge.net/project/gs-fonts/gs-fonts/8.
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/wvware/libwmf/0.2.8.4/libwmf-0.2.8.4.tar.gz
 try_download http://www.ijg.org/files/jpegsrc.v8a.tar.gz
 try_download ftp://ftp.remotesensing.org/pub/libtiff/tiff-3.9.2.tar.gz
-try_download http://www.littlecms.com/lcms-1.19.tar.gz
+try_download http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/1.19/lcms-1.19.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-8.71.tar.gz
-try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.4.1.tar.gz
+try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.4.2.tar.gz
 try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.6.0-10.tar.gz
 
 # Decompress applications.
@@ -73,7 +73,7 @@ echo "Starting..."
 
 # LibPNG.
 # Official PNG reference library.
-cd libpng-1.4.1
+cd libpng-1.4.2
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
