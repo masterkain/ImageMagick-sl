@@ -12,7 +12,7 @@ SF_MIRROR="heanet"
 # In any case tweak as your liking.
 IMAGEMAGICK_ARGUMENTS="--disable-static --with-modules --without-perl --without-magick-plus-plus --with-quantum-depth=8 --disable-openmp"
 # Installation path.
-CONFIGURE_PREFIX=/usr/local/imageMagick # no trailing slash.
+CONFIGURE_PREFIX=/usr/local # no trailing slash.
 # GhostScript font path.
 CONFIGURE_GS_FONT=$CONFIGURE_PREFIX/share/ghostscript
 # Mac OS X version.
