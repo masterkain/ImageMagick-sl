@@ -60,7 +60,7 @@ try_download http://"$SF_MIRROR".dl.sourceforge.net/project/freetype/freetype2/2
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/gs-fonts/gs-fonts/8.11%20%28base%2035%2C%20GPL%29/ghostscript-fonts-std-8.11.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/wvware/libwmf/0.2.8.4/libwmf-0.2.8.4.tar.gz
 try_download http://www.ijg.org/files/jpegsrc.v8b.tar.gz 
-try_download ftp://ftp.remotesensing.org/pub/libtiff/tiff-3.9.2.tar.gz
+try_download http://mirror.thekeelecentre.com/distfiles/tiff-3.9.4.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.0/lcms2-2.0a.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-8.71.tar.gz
 try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.4.3.tar.gz
@@ -130,7 +130,7 @@ cd ..
 
 # LibTIFF.
 # Support for the Tag Image File Format (TIFF)
-cd tiff-3.9.2
+cd tiff-3.9.4
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
