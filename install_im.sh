@@ -64,7 +64,7 @@ try_download http://download.osgeo.org/libtiff/tiff-3.9.4.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.0/lcms2-2.0a.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-8.71.tar.gz
 try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.4.3.tar.gz
-try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.6.3-9.tar.gz
+try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.6.3-10.tar.gz
 
 # Decompress applications.
 decompress_applications
@@ -138,7 +138,7 @@ cd ..
 
 # ImageMagick.
 # Software suite to create, edit, and compose bitmap images.
-cd ImageMagick-6.6.3-9
+cd ImageMagick-6.6.3-10
 export CPPFLAGS=-I$CONFIGURE_PREFIX/include
 export LDFLAGS=-L$CONFIGURE_PREFIX/lib
 ./configure --prefix=$CONFIGURE_PREFIX $IMAGEMAGICK_ARGUMENTS --with-gs-font-dir=$CONFIGURE_GS_FONT/fonts
