@@ -62,7 +62,7 @@ try_download http://"$SF_MIRROR".dl.sourceforge.net/project/wvware/libwmf/0.2.8.
 try_download http://www.ijg.org/files/jpegsrc.v8b.tar.gz 
 try_download http://download.osgeo.org/libtiff/tiff-3.9.4.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.0/lcms2-2.0a.tar.gz
-try_download http://ghostscript.googlecode.com/files/ghostscript-8.71.tar.gz
+try_download http://ghostscript.googlecode.com/files/ghostscript-9.00.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/libpng/libpng-canonical-test01/gz/libpng-1.4.4.tar.gz
 try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.6.5-0.tar.gz
 
@@ -100,7 +100,7 @@ cd ..
 
 # GhostScript.
 # Interpreter for the PostScript language and for PDF.
-cd ghostscript-8.71
+cd ghostscript-9.00
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
