@@ -63,7 +63,7 @@ try_download http://www.ijg.org/files/jpegsrc.v8b.tar.gz
 try_download http://download.osgeo.org/libtiff/tiff-3.9.4.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.0/lcms2-2.0a.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-9.00.tar.gz
-try_download http://"$SF_MIRROR".dl.sourceforge.net/project/libpng/libpng-canonical-test01/gz/libpng-1.4.4.tar.gz
+try_download http://"$SF_MIRROR".dl.sourceforge.net/project/libpng/01-libpng-master/1.4.4/libpng-1.4.4.tar.gz
 try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.6.5-0.tar.gz
 
 # Decompress applications.
