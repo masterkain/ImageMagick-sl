@@ -63,7 +63,7 @@ try_download http://www.ijg.org/files/jpegsrc.v8b.tar.gz
 try_download http://download.osgeo.org/libtiff/tiff-3.9.4.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.0/lcms2-2.0a.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-9.00.tar.gz
-try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.4.5.tar.gz
+try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.4.7.tar.gz
 try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.6.6-10.tar.gz
 
 # Decompress applications.
@@ -73,7 +73,7 @@ echo "Starting..."
 
 # LibPNG.
 # Official PNG reference library.
-cd libpng-1.4.5
+cd libpng-1.4.7
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
