@@ -59,12 +59,12 @@ function decompress_applications () {
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/freetype/freetype2/2.3.12/freetype-2.3.12.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/gs-fonts/gs-fonts/8.11%20%28base%2035%2C%20GPL%29/ghostscript-fonts-std-8.11.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/wvware/libwmf/0.2.8.4/libwmf-0.2.8.4.tar.gz
-try_download http://www.ijg.org/files/jpegsrc.v8b.tar.gz 
+try_download http://www.ijg.org/files/jpegsrc.v8c.tar.gz
 try_download http://download.osgeo.org/libtiff/tiff-3.9.4.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.0/lcms2-2.0a.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-9.00.tar.gz
-try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.4.5.tar.gz
-try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.6.6-10.tar.gz
+try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.4.8.tar.gz
+try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.7.1-0.tar.gz
 
 # Decompress applications.
 decompress_applications
@@ -73,7 +73,7 @@ echo "Starting..."
 
 # LibPNG.
 # Official PNG reference library.
-cd libpng-1.4.5
+cd libpng-1.4.8
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
@@ -81,7 +81,7 @@ cd ..
 
 # JPEG.
 # Library for JPEG image compression.
-cd jpeg-8b
+cd jpeg-8c
 ln -s `which glibtool` ./libtool
 export MACOSX_DEPLOYMENT_TARGET=$DEPLOYMENT_TARGET
 ./configure --enable-shared --prefix=$CONFIGURE_PREFIX
@@ -138,7 +138,7 @@ cd ..
 
 # ImageMagick.
 # Software suite to create, edit, and compose bitmap images.
-cd ImageMagick-6.6.6-10
+cd ImageMagick-6.7.1-0
 export CPPFLAGS=-I$CONFIGURE_PREFIX/include
 export LDFLAGS=-L$CONFIGURE_PREFIX/lib
 ./configure --prefix=$CONFIGURE_PREFIX $IMAGEMAGICK_ARGUMENTS --with-gs-font-dir=$CONFIGURE_GS_FONT/fonts
