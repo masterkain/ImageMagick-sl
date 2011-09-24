@@ -1,3 +1,7 @@
+# Warning
+
+While I try to keep this script up to date I recommend looking into [Homebrew](http://mxcl.github.com/homebrew/) for a simpler solution.
+
 # Introduction
 
 This is bash script to install ImageMagick on Snow Leopard.
