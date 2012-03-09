@@ -91,7 +91,7 @@ cd ..
 
 # Little cms.
 # A free color management engine in 100K.
-cd lcms-2.3
+cd lcms2-2.3
 make clean
 ./configure
 make
