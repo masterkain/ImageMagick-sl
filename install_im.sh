@@ -56,15 +56,15 @@ function decompress_applications () {
 }
 
 # Before running anything try to download all requires files, saving time.
-try_download http://"$SF_MIRROR".dl.sourceforge.net/project/freetype/freetype2/2.3.12/freetype-2.3.12.tar.gz
+try_download http://download.savannah.gnu.org/releases/freetype/freetype-2.4.9.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/gs-fonts/gs-fonts/8.11%20%28base%2035%2C%20GPL%29/ghostscript-fonts-std-8.11.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/wvware/libwmf/0.2.8.4/libwmf-0.2.8.4.tar.gz
-try_download http://www.ijg.org/files/jpegsrc.v8c.tar.gz
-try_download http://download.osgeo.org/libtiff/tiff-3.9.4.tar.gz
-try_download http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.0/lcms2-2.0a.tar.gz
+try_download http://www.ijg.org/files/jpegsr8d.zip
+try_download http://download.osgeo.org/libtiff/tiff-4.0.1.tar.gz
+http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.3/lcms2-2.3.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-9.00.tar.gz
-try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.4.8.tar.gz
-try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.7.4-9.tar.gz
+try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.5.9.tar.gz
+try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-6.7.5-10.tar.gz
 
 # Decompress applications.
 decompress_applications
@@ -73,7 +73,7 @@ echo "Starting..."
 
 # LibPNG.
 # Official PNG reference library.
-cd libpng-1.4.8
+cd libpng-1.5.9
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
@@ -81,7 +81,7 @@ cd ..
 
 # JPEG.
 # Library for JPEG image compression.
-cd jpeg-8c
+cd jpeg-8d
 ln -s `which glibtool` ./libtool
 export MACOSX_DEPLOYMENT_TARGET=$DEPLOYMENT_TARGET
 ./configure --enable-shared --prefix=$CONFIGURE_PREFIX
@@ -91,7 +91,7 @@ cd ..
 
 # Little cms.
 # A free color management engine in 100K.
-cd lcms-2.0
+cd lcms-2.3
 make clean
 ./configure
 make
@@ -113,7 +113,7 @@ sudo mv fonts $CONFIGURE_GS_FONT
 
 # The FreeType Project.
 # A free, high-quality and portable font engine.
-cd freetype-2.3.12
+cd freetype-2.4.9
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
@@ -130,7 +130,7 @@ cd ..
 
 # LibTIFF.
 # Support for the Tag Image File Format (TIFF)
-cd tiff-3.9.4
+cd tiff-4.0.1
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
@@ -138,7 +138,7 @@ cd ..
 
 # ImageMagick.
 # Software suite to create, edit, and compose bitmap images.
-cd ImageMagick-6.7.4-9
+cd ImageMagick-6.7.5-10
 export CPPFLAGS=-I$CONFIGURE_PREFIX/include
 export LDFLAGS=-L$CONFIGURE_PREFIX/lib
 ./configure --prefix=$CONFIGURE_PREFIX $IMAGEMAGICK_ARGUMENTS --with-gs-font-dir=$CONFIGURE_GS_FONT/fonts
