@@ -56,14 +56,14 @@ function decompress_applications () {
 }
 
 # Before running anything try to download all requires files, saving time.
-try_download http://download.savannah.gnu.org/releases/freetype/freetype-2.4.9.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/gs-fonts/gs-fonts/8.11%20%28base%2035%2C%20GPL%29/ghostscript-fonts-std-8.11.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/wvware/libwmf/0.2.8.4/libwmf-0.2.8.4.tar.gz
 try_download http://www.ijg.org/files/jpegsr8d.zip
 try_download http://download.osgeo.org/libtiff/tiff-4.0.1.tar.gz
-http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.3/lcms2-2.3.tar.gz
+try_download http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.3/lcms2-2.3.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-9.00.tar.gz
 try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.5.9.tar.gz
+try_download http://download.savannah.gnu.org/releases/freetype/freetype-2.4.9.tar.gz
 try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
 
 # Decompress applications.
