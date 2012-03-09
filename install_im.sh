@@ -10,7 +10,7 @@ SF_MIRROR="heanet"
 # ImageMagick configure arguments.
 # If you plan on using PerlMagick remove --without-perl
 # In any case tweak as your liking.
-IMAGEMAGICK_ARGUMENTS="--disable-static --with-modules --without-perl --without-magick-plus-plus --with-quantum-depth=8 --disable-openmp"
+IMAGEMAGICK_ARGUMENTS="--disable-static --with-modules --without-fontconfig --without-perl --without-magick-plus-plus --with-quantum-depth=8 --disable-openmp"
 # Installation path.
 CONFIGURE_PREFIX=/usr/local # no trailing slash.
 # GhostScript font path.
