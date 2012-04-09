@@ -61,7 +61,7 @@ try_download http://"$SF_MIRROR".dl.sourceforge.net/project/wvware/libwmf/0.2.8.
 try_download http://www.ijg.org/files/jpegsrc.v8d.tar.gz
 try_download http://download.osgeo.org/libtiff/tiff-4.0.1.tar.gz
 try_download http://"$SF_MIRROR".dl.sourceforge.net/project/lcms/lcms/2.3/lcms2-2.3.tar.gz
-try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.5.9.tar.gz
+try_download ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.5.10.tar.gz
 try_download http://download.savannah.gnu.org/releases/freetype/freetype-2.4.9.tar.gz
 try_download http://ghostscript.googlecode.com/files/ghostscript-9.00.tar.gz
 try_download ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
@@ -73,7 +73,7 @@ echo "Starting..."
 
 # LibPNG.
 # Official PNG reference library.
-cd libpng-1.5.9
+cd libpng-1.5.10
 ./configure --prefix=$CONFIGURE_PREFIX
 make
 sudo make install
