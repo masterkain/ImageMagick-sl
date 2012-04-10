@@ -31,7 +31,7 @@ function try_download () {
   file_name=`echo "$1" | ruby -ruri -e 'puts File.basename(gets.to_s.chomp)'` # I cheated.
   rm -f $file_name # Cleanup in case of retry.
   echo "Downloading $1"
-  curl --fail --progress-bar -O --url $1
+  curl --fail --progress-bar -O -L --url $1
   result=$? # Store the code of the last action, should be 0 for a successfull download.
   file_size=`ls -l "$file_name" | awk '{print $5}'`
   # We check for normal errors, otherwise check the file size.
